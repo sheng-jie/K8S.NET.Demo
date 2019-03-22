@@ -27,8 +27,9 @@ k8s涉及到很多基本概念，可以看[十分钟带你理解Kubernetes核心
 
 # 3. 环境准备
 
-梳理完基本概念，我们来动手玩一玩吧。有三种玩法：一种就是跟随k8s官方的[在线实验室](https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/)进行实操；第二种就是基于Docker For Windows 中集成的k8s进行玩耍；第三种就是安装`MiniKube`捣鼓。
-这里选择第二种进行讲解。
+梳理完基本概念，我们来动手玩一玩吧。有三种玩法：一种就是跟随k8s官方的[在线实验室](https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/)进行实操；第二种就是基于Docker For Windows 中集成的k8s进行玩耍；第三种就是安装`MiniKube`捣鼓。这里选择第二种进行讲解。
+
+*PS：很多初学者在环境准备阶段遭遇挫折的后就直接放弃了，笔者为了搭建这个k8s环境也耗费了不少时日，其中包含一次重装系统，汗！希望下面的步骤助你k8s之行有个好的开端。*
 
 ## 3.1. 在Docker for Windows中启用Kubernetes
 首先确保你已安装Docker for Windows。
@@ -47,6 +48,7 @@ KubeDNS is running at https://localhost:6445/api/v1/namespaces/kube-system/servi
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
+*环境搭建成功，你就成功了一半，请再接再厉动手完成以下实验！*
 # 4. 运行第一个Pod
 
 ## 4.1. 创建初始镜像
@@ -265,7 +267,7 @@ k8s-net-service      NodePort       10.104.21.80    <none>        80:30000/TCP  
 kubernetes           ClusterIP      10.96.0.1       <none>        443/TCP          12h
 ```
 
-然后浏览器访问[http://localhost:8091/](http://localhost:8091/)，尝试多次刷新浏览器，显示效果如下，我们发现ReplicaSet已帮我们做好了负载均衡：
+然后浏览器访问[http://localhost:8091/](http://localhost:8091/)，尝试多次刷新浏览器，显示效果如下，我们发现ReplicaSet已帮我们做好了负载均衡。
 ![负载均衡效果](https://upload-images.jianshu.io/upload_images/2799767-0bb43b1b8f60140c.gif?imageMogr2/auto-orient/strip)
 
 
@@ -293,9 +295,14 @@ k8s-net-replicaset-tf992   1/1       Running             0          13m
 你可能又问了，我现在访问高峰过了，我怎么快速缩放应用呢？啊，和上面一样的，你把`--replicas`参数改小点就是了，就像这样`kubectl scale replicaset k8s-net-replicaset --replicas=3`。
 
 # 7. 最后
-本文从使用docker创建image，到使用k8s创建第一个pod，到暴露第一个Service，再到使用ReplicaSet 进行容器伸缩，基本串通了k8s的核心基础概念，从而对k8s有了基础的认知，希望对你的容器化子路有所帮助。
+本文从使用docker创建image，到使用k8s创建第一个pod，到暴露第一个Service，再到使用ReplicaSet 进行容器伸缩，基本串通了k8s的核心基础概念，从而对k8s有了基础的认知，希望对你的K8S之路有所帮助。
+
 由于篇幅有限，笔者也是初玩，k8s的很多功能并未一一罗列，那就留着下次分享吧。
 如果要问我，k8s有什么好书推荐，首推《Kubernetes In Action》，国内已经有中文版了，翻译的不错！
+本文示例代码已上传至GitHub： **[K8S.NET.Demo](https://github.com/sheng-jie/K8S.NET.Demo)**。
+
 
 >参考资料
  [雨夜朦胧 - Kubernetes初探[1]：部署你的第一个ASP.NET Core应用到k8s集群](https://www.cnblogs.com/RainingNight/p/first-aspnetcore-app-in-k8s.html)
+
+![](https://upload-images.jianshu.io/upload_images/2799767-efe4ebcd991746f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
